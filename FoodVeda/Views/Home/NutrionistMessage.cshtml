@@ -18,20 +18,22 @@
         </div>
     </div>
     <div class="container mt-5">
+        <label for="select" class="form-label">Name of Nutritionist</label>
         @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "LeedCreateForm" }))
         {
             @Html.AntiForgeryToken();
-            <div>
-                <label for="select" class="mb-2">Name of Nutritionist</label>
+            <div class="mb-3">
+
                 @* @Html.DropDownList("Nutrionist",new List<SelectListItem>{ })*@
                 @Html.DropDownList("UserId", new SelectList(ViewBag.Neutrionist, "ID", "FullName"))
                 @Html.ValidationMessageFor(m => m.UserId)
-            </div>
+            </div><br /><br /><br />
+            <label for="uemail" class="form-label">Your FullName </label><br />
             <div class="mb-3">
-                <label for="uemail" class="form-label">Your FullName </label>
+
                 @Html.EditorFor(m => m.Name, new { @type = "text" })
                 @Html.ValidationMessageFor(m => m.Name)
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="emailHelp" class="form-text"></div>
             </div>
             <div class="mb-3">
                 <label for="textarea" class="form-label mt-3" style="display: block;">Message to ask</label>
@@ -40,7 +42,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="uemail" class="form-label">Your Email </label>
+                <label for="uemail" class="form-label">Your Email </label><br />
                 @Html.EditorFor(m => m.Email, new { @type = "Email" })
                 @Html.ValidationMessageFor(m => m.Email)
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>

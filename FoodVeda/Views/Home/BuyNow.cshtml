@@ -3,16 +3,17 @@
     ViewData["Title"] = "BuyNow";
     var orderId = (string)ViewBag.OrderForTrackingStatus;
 }
-@if (orderId!="1")
-{
 
-    <script>alert("Your Order Id is" + @orderId + "Please save it to track the order")</script>
-}
 <div class="popup-container">
     <div class="popup">
         @{ var message = (string)ViewBag.productDetails.Title.ToString();
             var rate = (string)ViewBag.productDetails.DisplayRatePerQuantity.ToString();
             var productId = (string)ViewBag.productDetails.Id.ToString();
+        }
+        @if (orderId != "1")
+        {
+
+            <h2>Your Order Id is @orderId. Please save it to track the order</h2>
         }
         <h2>Product Title: @message </h2>
         <h2>Rate: @rate </h2>
@@ -21,8 +22,8 @@
 </div>
 <div class="container my-3 wrapp">
     <form method="post" asp-action="BuyNow">
-        <div class="mb-3">
-            <label for="uname" class="form-label">Name</label>
+        <div class="mb-3 group" >
+            <label for="uname" class="form-label">Name</label
 
             @Html.EditorFor(m => m.Name, new { @class = "form-controlr" })
         </div>
