@@ -1,0 +1,32 @@
+.popup {
+  display: none;
+  place-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.popup label {
+  color: #fff;
+  font-size: 18px;
+}
+.popup textarea {
+  resize: none;
+  width: 350px;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.popup button {
+  width: 150px;
+  padding: 5px 25px;
+  letter-spacing: 1px;
+}
+
+.btn:focus {
+  outline: none;
+}

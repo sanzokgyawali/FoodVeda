@@ -1,0 +1,103 @@
+﻿@model FoodVeda.Models.Order
+@{
+    ViewData["Title"] = "BuyNow";
+    var orderId = (string)ViewBag.OrderForTrackingStatus;
+}
+@if (orderId!="1")
+{
+
+    <script>alert("Your Order Id is" + @orderId + "Please save it to track the order")</script>
+}
+<div class="popup-container">
+    <div class="popup">
+        @{ var message = (string)ViewBag.productDetails.Title.ToString();
+            var rate = (string)ViewBag.productDetails.DisplayRatePerQuantity.ToString();
+            var productId = (string)ViewBag.productDetails.Id.ToString();
+        }
+        <h2>Product Title: @message </h2>
+        <h2>Rate: @rate </h2>
+
+    </div>
+</div>
+<div class="container my-3 wrapp">
+    <form method="post" asp-action="BuyNow">
+        <div class="mb-3">
+            <label for="uname" class="form-label">Name</label>
+
+            @Html.EditorFor(m => m.Name, new { @class = "form-controlr" })
+        </div>
+        <div class="mb-3">
+            <label for="uemail" class="form-label">Email</label>
+            @Html.EditorFor(m => m.Email, new { @class = "form-controlr" })
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            @Html.EditorFor(m => m.PhoneNumber, new { @class = "form-controlr" })
+        </div>
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            @Html.DropDownList("LocationId", new SelectList(ViewBag.Location, "Id", "LocationName"))
+            @Html.ValidationMessageFor(m => m.LocationId)
+        </div>
+        <div class="mb-3">
+            <label for="full-location" class="form-label">Full Location</label>
+            @Html.EditorFor(m => m.FullAddress, new { @class = "form-controlr" })
+        </div>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            @Html.EditorFor(m => m.Quantity, new { @class = "form-controlr" })
+        </div>
+        @Html.Hidden("TotalPrice", rate);
+        @{
+            var price = (List<PrimaryLocation>)ViewBag.Location;
+            var DeliveryCharge = Int32.Parse(price.FirstOrDefault().DeliveryCharge);
+
+        }
+        @Html.Hidden("ProductId", productId)
+        @{
+            int rateDown = Int32.Parse(rate) + DeliveryCharge;
+        }
+        <div class="delivery-charge mb-3">Your price: <span class="price">@rateDown </span></div>
+        <button type="submit" class="btn btn-success mb-3" id="button">Send</button>
+        <button type="submit" class="btn btn-secondary mb-3">Cancel</button>
+    </form>
+    @{
+        //var Locations = (List<PrimaryLocation>)ViewBag.Location().;
+
+    }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $("#LocationId").on('change', function () {
+            alert("me");
+            var LocationId = $("#LocationId").val();
+            var rate =@rate;
+            if (LocationId == 1) {
+                rate += 100
+            }
+            else if (LocationId == 2) {
+                rate += 80
+            }
+            else if (LocationId == 3) {
+                rate += 100
+            }
+            else if (LocationId == 4) {
+                rate += 80
+            }
+            else if (LocationId == 5) {
+                rate += 150
+            }
+            else if (LocationId = 6) {
+                rate += 120
+            }
+            else {
+                rate+=90
+            }
+            $("#TotalPrice").val() = rate;
+            $(".price").html(
+
+                rate
+            );
+        });
+    </script>
+</div>
+

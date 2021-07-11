@@ -3,5 +3,59 @@
     ViewData["Title"] = "FullDetails";
 }
 
-<h1>FullDetails</h1>
 
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="@Model.BlobUrl" alt="">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>Vetgetable’s Package</h3>
+                    <div class="product__details__rating">
+                        @{
+                            var starRating = Model.AverageRating;
+                            var cnt = 0;
+                        }
+                        @for ( cnt = 1; cnt <= Model.AverageRating; cnt++)
+                        {
+
+                            <i class="fa fa-star"></i>
+                           
+                        }
+                        @{
+                            var diffWith = 5 - cnt;
+                        }
+                        @for (int i = cnt; i <= 5; i++)
+                        {
+                            <i class="fa fa-star-o"></i>
+                        }
+                        <span>(18 reviews)</span>
+                    </div>
+                    <div class="product__details__price">Rs @Model.DisplayRatePerQuantity</div>
+                    <p>
+                        @Model.Description
+                    </p>
+                    <div class="product__details__quantity">
+                        <div class="quantity">
+
+                        </div>
+                    </div>
+                    <a href="/Home/BuyNow?productId=@Model.Id" class="primary-btn">Buy now</a>
+
+                    <ul>
+                        <li><b>Availability</b> <span>@Model.Quantity</span></li>
+                        </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+/* popup styling */
+.container {
+  width: 450px;
+}
+
+label {
+  font-size: 16px;
+}
+textarea {
+  resize: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  width: 200px;
+  padding: 10px 15px;
+}

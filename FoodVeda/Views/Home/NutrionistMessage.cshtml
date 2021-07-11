@@ -3,5 +3,69 @@
     ViewData["Title"] = "NutrionistMessage";
 }
 
-<h1>NutrionistMessage</h1>
+<!DOCTYPE html>
+
+
+    <!-- consult nutritionist  popup section -->
+    <!-- start -->
+    <div class="popup-container">
+        <div class="popup">
+            @{ 
+                var message = (string)ViewBag.Message.ToString();
+            }
+            <h2>@message</h2>
+            <button class="btn btn-success">Ok</button>
+        </div>
+    </div>
+    <div class="container mt-5">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "LeedCreateForm" }))
+        {
+            @Html.AntiForgeryToken();
+            <div>
+                <label for="select" class="mb-2">Name of Nutritionist</label>
+                @* @Html.DropDownList("Nutrionist",new List<SelectListItem>{ })*@
+                @Html.DropDownList("UserId", new SelectList(ViewBag.Neutrionist, "ID", "FullName"))
+                @Html.ValidationMessageFor(m => m.UserId)
+            </div>
+            <div class="mb-3">
+                <label for="uemail" class="form-label">Your FullName </label>
+                @Html.EditorFor(m => m.Name, new { @type = "text" })
+                @Html.ValidationMessageFor(m => m.Name)
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="textarea" class="form-label mt-3" style="display: block;">Message to ask</label>
+                @Html.TextAreaFor(m => m.Message, new { @id = "textarea", @cols = 30, @rows = 10 })
+                @Html.ValidationMessageFor(m => m.Message)
+            </div>
+
+            <div class="mb-3">
+                <label for="uemail" class="form-label">Your Email </label>
+                @Html.EditorFor(m => m.Email, new { @type = "Email" })
+                @Html.ValidationMessageFor(m => m.Email)
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <input type="submit" class="btn btn-success" id="button" value="Send" />
+        }
+    </div>
+
+    <!-- end -->
+    <!-- Inline script -->
+    @*<script>const button = document.querySelector("#button");
+    const popupContainer = document.querySelector(".popup-container");
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+    })
+
+    button.addEventListener("click", () => {
+        popupContainer.style.display = "grid";
+    });
+
+    popupContainer.addEventListener("click", () => {
+        popupContainer.style.display = "none";
+    })</script>*@
+
 

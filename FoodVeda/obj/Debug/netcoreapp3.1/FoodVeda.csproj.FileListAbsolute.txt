@@ -416,3 +416,17 @@ C:\Users\user\source\repos\FoodVeda\FoodVeda\bin\Debug\netcoreapp3.1\runtimes\wi
 C:\Users\user\source\repos\FoodVeda\FoodVeda\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Home\NutrionistMessage.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\user\source\repos\FoodVeda\FoodVeda\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\Users\user\source\repos\FoodVeda\FoodVeda\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Home\FullDetails.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Home\BuyNow.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Home\TrackOrder.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Neutrionist\Index.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_null.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Neutrionist\Message.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Vendor\Index.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_VendorLayout.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Vendor\ViewOrder.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Vendor\AddProduct.cshtml.g.cs
+C:\Users\user\source\repos\FoodVeda\FoodVeda\obj\Debug\netcoreapp3.1\Razor\Views\Vendor\ViewProduct.cshtml.g.cs

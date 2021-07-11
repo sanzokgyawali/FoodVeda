@@ -1,0 +1,15 @@
+.wrapp {
+  width: 500px;
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+  font-size: 15px;
+}
+
+button {
+  width: 150px;
+}

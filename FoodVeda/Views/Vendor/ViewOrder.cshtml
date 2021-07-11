@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FoodVeda.Models.Order>
+@{
+    ViewData["Title"] = "ViewOrder";
+}
+
+<div class="box-content">
+    <div class="popup" id="popup">
+
+        <div class="mb-3">
+            <label for="replymessage" class="form-label">Reply</label>
+            <textarea class="form-control" id="replymessage" rows="10" cols="10" placeholder="Enter message here..."></textarea>
+        </div>
+        <button class="btn btn-success" id="submit-btn" type="submit" onclick="ClickMeAjax()">Submit</button>
+
+    </div>
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Placing Name</th>
+                <th>Placing Email</th>
+                <th>Placing PhoneNumber</th>
+                <th>Quantity</th>
+                <th>TotalPrice</th>
+                <th>FullAddress</th>
+                <th>OrderTrackId</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var cnt = 0;
+            }
+            @foreach (var result in Model.ToList())
+            {
+
+            <tr>
+                <td>@cnt++</td>
+                <td class="center">@result.Name</td>
+                <td class="center">@result.Email</td>
+                <td class="center">@result.PhoneNumber</td>
+                <td class="center">@result.Quantity</td>
+                <td class="center">@result.TotalPrice</td>
+                <td class="center">@result.FullAddress</td>
+                <td class="center">@result.OrderIdForTrackingStatus</td>
+                <td class="center"><button class="btn btn-success" onclick="statusChange(@result.Id)">Order Deliver to warehouse</button></td>
+            </tr>
+
+            }
+        </tbody>
+
+    </table>
+</div>
+<script>
+    function statusChange(orderId) {
+        $.ajax({
+            url: "/Vendor/ChangeStatusOrder",
+            method:"get",
+            data: { OrderId: orderId },
+            success: function () {
+                alert("Status Changed");
+            }
+        });
+    }
+</script>
+

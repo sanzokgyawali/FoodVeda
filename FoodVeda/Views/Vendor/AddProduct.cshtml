@@ -1,0 +1,69 @@
+﻿@model FoodVeda.Models.Product 
+@{
+    ViewData["Title"] = "AddProduct";
+}
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="halflings-icon edit"></i><span class="break"></span>Form Elements</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
+                <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
+            </div>
+        </div>
+        <div class="box-content">
+            <form class="form-horizontal"  method="post" asp-action="AddProduct">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="typeahead">Title </label>
+                        <div class="controls">
+
+                            @Html.EditorFor(x => x.Title)
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="date01">Display Rate</label>
+                        <div class="controls">
+                            @Html.EditorFor(x => x.DisplayRatePerQuantity)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="date01"> Rate for FoodVeda</label>
+                        <div class="controls">
+                            @Html.EditorFor(x => x.RateForFoodVeda)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="fileInput">Quantity</label>
+                        <div class="controls">
+                            @Html.EditorFor(x => x.Quantity)
+                        </div>
+                    </div>
+                    <div class="control-group hidden-phone">
+                        <label class="control-label" for="textarea2">BlobUrl</label>
+                        <div class="controls">
+                            @Html.EditorFor(x => x.BlobUrl)
+                        </div>
+                    </div>
+                    <div class="control-group hidden-phone">
+                        <label class="control-label" for="textarea2">Description</label>
+                        <div class="controls">
+                            @Html.TextAreaFor(x => x.Description)
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="reset" class="btn">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div><!--/span-->
+
+</div>
+

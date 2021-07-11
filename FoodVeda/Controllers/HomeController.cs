@@ -23,7 +23,7 @@ namespace FoodVeda.Controllers
         //[ViewLayout("_MyLayout")]
         public IActionResult Index()
         {
-            var topProducts =  applicationDb.Products.OrderByDescending(x => x.AverageRating).Take(4).ToList();
+            var topProducts =  applicationDb.Products.OrderByDescending(x => x.AverageRating).Take(8).ToList();
             var latestProducts = applicationDb.Products.OrderByDescending(x => x.Id).Take(4).ToList();
             var homeDto = new HomeIndexDto()
             {
@@ -33,17 +33,28 @@ namespace FoodVeda.Controllers
             return View(homeDto);
         }
         [HttpGet]
-        public IActionResult Nutrionist()
+        public IActionResult NutrionistMessage(bool status=false)
         {
+            if(status==true)
+            {
+                ViewBag.Message = "Succcessfully sent the message";
+            }
+            else
+            {
+                ViewBag.Message = "";
+            }
             ViewBag.Neutrionist = applicationDb.Users.Where(x => x.UserTypeId ==(int)UserTypeEnum.Nutrionist).ToList();
             return View();
         }
         [HttpPost]
-        public IActionResult Nutrionist(MessageToNutrionist message)
+        public IActionResult NutrionistMessage(MessageToNutrionist messageN)
         {
-            applicationDb.MessageToNutrionists.Add(message);
-            ViewBag.Message = "Succcessfully sent the message";
-            return Redirect(nameof(Nutrionist));
+            messageN.Status = "pending";
+            applicationDb.MessageToNutrionists.Add(messageN);
+            applicationDb.SaveChanges();
+            ViewBag.Message = "Succcessfully sent the message! You will receive the answer from Nutrionist in mail";
+            ViewBag.Neutrionist = applicationDb.Users.Where(x => x.UserTypeId == (int)UserTypeEnum.Nutrionist).ToList();
+            return View(nameof(NutrionistMessage));
         }
         [HttpGet]
         public IActionResult FullDetails(int productId)
@@ -54,7 +65,8 @@ namespace FoodVeda.Controllers
         [HttpGet]
         public IActionResult BuyNow(int productId, string OrderIdForTrackingStatus=null)
         {
-            ViewBag.OrderForTrackingStatus = OrderIdForTrackingStatus;
+            ViewBag.OrderForTrackingStatus = "1";
+            ViewBag.Location = applicationDb.PrimaryLocations.ToList();
             ViewBag.productDetails = applicationDb.Products.Where(x => x.Id == productId).FirstOrDefault();
             return View();
         }
@@ -63,15 +75,24 @@ namespace FoodVeda.Controllers
         {
             Random generator = new Random();
             order.OrderIdForTrackingStatus = "F" + generator.Next(0, 10000).ToString("D6");
+            order.StatusId = 1;
+            ViewBag.Location = applicationDb.PrimaryLocations.ToList();
+            ViewBag.OrderForTrackingStatus = order.OrderIdForTrackingStatus;
+            ViewBag.productDetails = applicationDb.Products.Where(x => x.Id == order.ProductId).FirstOrDefault();
             applicationDb.Orders.Add(order);
             applicationDb.SaveChanges();
-            return View(nameof(BuyNow),new { productId=order.ProductId, OrderIdForTrackingStatus=order.OrderIdForTrackingStatus });
+            return View(nameof(BuyNow));
 
+        }
+        [HttpGet]
+        public IActionResult TrackOrder()
+        {
+            return View();
         }
         [HttpGet]
         public string OrderTrackingStatus(string OrderId)
         {
-            return applicationDb.Orders.Where(x => x.OrderIdForTrackingStatus == OrderId).Select(x=>x.OrderIdForTrackingStatus).FirstOrDefault();
+            return applicationDb.Orders.Where(x => x.OrderIdForTrackingStatus == OrderId).Select(x=>x.Status.Name).FirstOrDefault();
         }
         public IActionResult Privacy()
         {
