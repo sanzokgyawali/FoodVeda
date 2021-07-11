@@ -74,7 +74,7 @@ namespace FoodVeda.Controllers
             message.IsBodyHtml = true;
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
             System.Net.NetworkCredential basicCredential1 = new
-            System.Net.NetworkCredential("sanzokgyawali123@gmail.com", "KopilaRam12@");
+            System.Net.NetworkCredential("san@gmail.com", "san@");
             client.EnableSsl = true;
             client.UseDefaultCredentials = false;
             client.Credentials = basicCredential1;
